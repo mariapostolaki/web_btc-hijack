@@ -1,0 +1,22 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  padding-top: 70px; }
+  body a:hover, body a:focus {
+    text-decoration: none; }
+  body .row-spacing {
+    padding-left: 0px;
+    padding-bottom: 60px; }
+  body .jumbotron p {
+    font-size: 16px; }
+  @media screen and (min-width: 1200px) {
+    body .container .jumbotron, body .container-fluid .jumbotron {
+      padding-left: 100px;
+      padding-right: 100px; } }
+  body .figure-caption {
+    padding-top: 10px;
+    color: #000;
+    font-size: 90%; }
+  body .thumbnail .caption-heading-top {
+    margin-top: 0; }
+
+/*# sourceMappingURL=style.css.map */
