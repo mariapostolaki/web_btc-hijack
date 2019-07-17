@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" sizes="152x152" href="img/iconified/apple-touch-icon-152x152.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="img/iconified/apple-touch-icon-180x180.png" />
 
-<title>The Internet for Blockchains: Attacks & Definces</title>
+<title>Blockchain meets Internet Routing</title>
 
 <!-- Bootstrap -->
 <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -98,7 +98,7 @@
         </div>
 
         <div id="about">
-            <h1 class="text-center" style="padding-bottom: 40px"> The Internet for Blockchains: Attacks & Definces</h1>
+            <h1 class="text-center" style="padding-bottom: 40px"> Blockchain meets Internet Routing</h1>
             <div class="jumbotron" >
                     <p>We study the effects of the Internet, especially with respect to routing on public Blockchains, taking Bitcoin as our use case. To that end, we first uncover the 
                         impact that Internet routing attacks (such as <a href="files/btc_hijack.pdf">BGP hijacks</a>) and malicious Internet Service Providers (ISP) can have on Bitcoin (see <a href="https://en.wikipedia.org/wiki/BGP_hijacking">paper</a>). Next, we provide a concrete relay design that guarantees connectivity to the Bitcoin network even in the presence of a malicious ISP (see <a href="https://nsg.ee.ethz.ch/fileadmin/user_upload/publications/ndss19-final252.pdf">paper</a>). Both our attacks and our relay design generalize to other public Blockchains.
@@ -147,18 +147,15 @@
                     </p>             
         <div class="bs-callout bs-callout-danger">
             <p class="lead" style="color:#d9534f;"><b>Our Work</b> won an IRTF Applied Networking Research Prize!</p>
-            <p class="lead">You can find more information about the award <a href="https://irtf.org/anrp" style="color:#d9534f;">here</a> and the video of the presentation  <a href="https://www.youtube.com/watch?v=2RB-Gztfvpk&feature=youtu.be&t=769" style="color:#d9534f;">here</a> .</p>
-
-    
-            
+            <p class="lead">You can find more information about the award <a href="https://irtf.org/anrp" style="color:#d9534f;">here</a> and the video of the presentation  <a href="https://www.youtube.com/watch?v=2RB-Gztfvpk&feature=youtu.be&t=769" style="color:#d9534f;">here</a> .</p>            
         </div>
         
  
 
  
       
- </div>
-    </div>   
+        </div>
+        </div>   
 
 
 
@@ -219,18 +216,6 @@
              
 
 
-
-
-
-
-
-
-
-
-
-
-
-
             <div id="attack" class="row row-fact">
                 <h2 class="col-xs-12">Attack#1: Routing attacks can partition Bitcoin into pieces</h2>
                 <h2 class="col-xs-12"></h2>
@@ -268,7 +253,7 @@
           
 
             <div class="row row-fact">
-                <h2 class="col-xs-12">Attack#2: Routing attacks can delay block delivery by 20 minutes</h2>
+                <h2 class="col-xs-12">Attack#2: Routing attacks can delay block delivery</h2>
                 <h2 class="col-xs-12"></h2>
                 <div class="col-md-12">
                         <p>An attacker can use routing attacks to delay the delivery of a block to a victim node by 20 minutes while staying completely undetected. During this period the victim is unaware of the most recently mined block and the corresponding transactions. The impact of this attack varies depending on the victim.  If the victim is a merchant, it is susceptible to double spending attacks. If it is a miner, the attack wastes its computational power. Finally, if the victim is a regular node, it is unable to contribute to the network by propagating the last version of the blockchain.</p>
@@ -297,23 +282,20 @@
                     </video>
                 </div>
 
+            </div>
 
 
             <div id="defences" class="row row-fact">
 
-                <h2 class="col-xs-12">Defences: The SABRE network can stay connected </h2>
+                <h2 class="col-xs-12">The SABRE network can protect the Bitcoin system from partitioning attacks</h2>
                 <h2 class="col-xs-12"></h2>
 
                 <div class="col-md-12">
                     <p>To avoid partitioning the SABRE network needs to protect relay-to-relay connections and relay-to-client connections. To protect relay-to-relay connections SABRE places nodes in ISPs that peer directly to each other, forming a densely connected graph of direct peering links and also in /24 prefixes. To protect relay-to-client connections SABRE places relay nodes such that most clients have for each potential attacker at least one path to SABRE that is more economically preferred than any path this attacker can advertise.
                     <p/>
                 </div>
-            </div>
 
-             
-            
 
-              
              <div class="col-md-5">
               <h4 class="col-xs-12">Network Protection:</h4> 
                <ul style="list-style-type:square">
@@ -321,7 +303,7 @@
                 <br>
                     <li><b>SABRE design: </b> SABRE is a small set of special Bitcoin clients that are directly connected to each other. Each Bitcoin client connects to at least one SABRE node.</li>
                      <li><b>Step 1: </b> An AS-level adversary isolates Bitcoin clients in the grey zone by hijacking prefixes pertaining to those clients, effectively creating a partition.</li>
-                     <li><b>Step 2-4: </b> A block mined within the grey zone, namely by node n is propagated to the rest of the Bitcoin network via the SABRE relay network, namely nodes B, C, D.</li>
+                     <li><b>Step 2-5: </b> A block mined within the grey zone, namely by node n is propagated to the rest of the Bitcoin network via the SABRE relay network, namely nodes B, C, D.</li>
                             </url>                                        </url>                     
                 </div>
 
@@ -338,18 +320,17 @@
 
        
 
-
             <div id="defences" class="row row-fact">
 
-                <h2 class="col-xs-12">Defences: The SABRE nodes can sustain malicious load</h2>
+                <h2 class="col-xs-12">The SABRE nodes can sustain DDoS attacks</h2>
                 <h2 class="col-xs-12"></h2>
 
-             <div class="col-md-12">
-                    <p>
+                <div class="col-md-12">
+
+                        <p>
                         As a publicly-facing and transparent network, SABRE is an obvious target for attackers who could, among others, craft (D)DoS attacks against its publicly-known nodes to disrupt it. To protect SABRE deployments against such attacks, we leverage the fact that most of the relay operations are communication-heavy (propagating information around) as opposed to being computation-heavy. In addition to that, the content (block) that the relays need to propagate each time is predictable and small in size. These properties enable us to offload most SABRE operations to hardware, using programmable network devices. Thanks to this software- hardware co-design, SABRE relay nodes can sustain up to Tbps of load.
                     </p>
            </div>
-            </div>
 
            
                
@@ -380,9 +361,9 @@
                     Your browser does not support the video tag.
                     </video>
                 </div>
-
-
             </div>
+
+       
       
 
         <div id="publications">
@@ -390,7 +371,7 @@
             <div class="row row-spacing">
                 <div class="col-sm-12">
                     <div class="thumbnail">
-                        <div class="row publication-sosr17">
+                              <div class="row publication-sosr17">
                             <div class="col-md-2 col-sm-3"><a href="files/btc_hijack.pdf" target="_blank"><img src="png/paper.png" alt="..." class="img-responsive"></a></div>
                             <div class="col-md-10 col-sm-9">
                                 <div class="caption">
@@ -505,7 +486,6 @@ year={2019}
                     </div>
                 </div>
             </div>
-        </div>
 
 
 
